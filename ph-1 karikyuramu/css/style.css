@@ -71,6 +71,40 @@ body {
   flex-direction: row;
 }
 
+@media (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+  .button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  .button span{
+    width: 30px;
+    height: 2px;
+    background-color: #0071BC;
+  }
+
+  .button span:nth-child(1) {
+    margin-top: 13px;
+  }
+
+  .button span:nth-child(2) {
+    margin-top: 7px;
+  }
+
+    .button span:nth-child(3) {
+    margin-top: 7px;
+  }
+
+  /**{
+    outline:2px red solid;
+  }*/
+}
+
 .li {
   color: #0071bc;
   margin: 12px;
@@ -364,6 +398,14 @@ body {
   background-color: #F7F9FB;
 }
 
+@media (max-width: 767px) {
+  .event_pictures_parents {
+    overflow-x: auto;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
 .event_pictures {
   width: 320px;
   height: 200px;
@@ -376,7 +418,18 @@ body {
   flex-direction: row;
   text-align: center;
   gap: 40px;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-x:auto;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .div_event_pictures {
+    /*display: grid;
+    grid-template-rows: repeat(320px);*/
+    overflow: scroll;
+    min-width: 375px;
+  }
 }
 
 .months_p {
