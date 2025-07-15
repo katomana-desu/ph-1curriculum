@@ -63,6 +63,11 @@ body {
   display: flex;
   align-items: center;
   justify-items: center;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 9999;
+  background-color: #ffffff;
   justify-content: space-between;
 }
 
@@ -125,6 +130,10 @@ body {
   width: 40px;
   height: 40px;
   margin: 16px;
+}
+
+.posselogo {
+  margin-left: 24px;
 }
 
 /**
