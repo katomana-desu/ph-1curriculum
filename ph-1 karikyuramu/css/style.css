@@ -59,6 +59,8 @@ body {
 /**
  * 2.1 - ヘッダー
  */
+
+
 .header {
   display: flex;
   align-items: center;
@@ -69,23 +71,98 @@ body {
   z-index: 9999;
   background-color: #ffffff;
   justify-content: space-between;
+    /* background-color: transparent;
+  filter: brightness(7); */
+}
+@media (max-width: 767px) {
+  .header {
+    height: 48px;
+  }
+}
+
+.transparent:not(.header.is-open){
+  background-color: transparent;
+  filter: brightness(7);
+}
+
+
+.header_phone {
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .header_phone {
+    visibility: visible;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0 16px;
+  }
 }
 
 .nav {
-  display: flex;
+  /* display: none; */
+  display: flex; 
   flex-direction: row;
+  visibility: visible;
 }
 
 @media (max-width: 767px) {
   .nav {
-    display: none;
+          /*display: none;*/
+          position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+    visibility: hidden;
+    opacity: 10;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F7F9FB;
+    display: flex;
+    flex-direction: column;
+    padding: 120px;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
+
+  .header.is-open .nav{
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+  .header.is-open .button{
+    .header_menu1 {
+        transform: rotate(45deg) translate(0px, 9.5px);
+        transition: 0.3s;
+        transition-timing-function: linear;
+      }
+
+
+    .line_official_button_div_hamburger {
+      visibility: visible;
+    }
+      
+
+    .header_menu2 {
+      display: none;
+    }
+
+    .header_menu3 {
+      transform: rotate(-45deg) translate(0px, -9.5px);
+      transition: 0.3s;
+      transition-timing-function: linear;
+    }
+  }
+
   .button {
   width: 42px;
   height: 42px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 20;
 }
   .button span{
     width: 30px;
@@ -115,15 +192,39 @@ body {
   margin: 12px;
 }
 
+@media (max-width: 767px) {
+  .li {
+    margin-bottom: 32px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+
 .ul-sns {
   display: flex;
   margin: 10px;
+}
+
+@media (max-width: 767px) {
+  .ul-sns {
+    margin: 0 auto;
+}
+
 }
 
 .ul-contents {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .ul-contents {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
 }
 
 .logo {
@@ -134,7 +235,75 @@ body {
 
 .posselogo {
   margin-left: 24px;
+  margin-top: 14px;
+  visibility: visible;
 }
+
+@media (max-width: 767px) {
+  .posselogo {
+    position: fixed;
+    z-index: 30;
+  }
+}
+
+.line_official_button_div_hamburger {
+  /* visibility: hidden; */
+}
+
+@media (max-width: 767px) {
+  .line_official_button_div_hamburger {
+  /* visibility: visible; */
+  width: 315px;
+  height: 55px;
+  background-color: #ffffff;
+  border-radius: 98px;
+  border-width: 1px;
+  border-color: #0071BC;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 119px;
+  padding-left: 119px;
+  margin: 0 auto;
+  margin-top: 88px;
+  margin-bottom: 42px;
+}
+
+.line_official_button_div_hamburger:hover {
+  background-color: #0071BC;
+  border-color: #ffffff;
+}
+}
+
+.kousiki_hamburger {
+  /* visibility: hidden; */
+}
+
+@media (max-width: 767px) {
+  .kousiki_hamburger {
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+}
+
+  .line_official_button_div_hamburger,
+  .kousiki_hamburger {
+    display: none;
+  }
+
+@media (max-width: 767px) {
+  .line_official_button_div_hamburger,
+  .kousiki_hamburger {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .header.is-open .line_official_button_div_hamburger,
+  .header.is-open .kousiki_hamburger {
+    display: block;
+  }
+}
+
 
 /**
  * 2.2 - フッター
@@ -422,7 +591,7 @@ body {
   border-top-left-radius: 10px;
 }
 
-.div_event_pictures {
+#event_slider .splide__track {
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -433,7 +602,7 @@ body {
 }
 
 @media (max-width: 767px) {
-  .div_event_pictures {
+  #event_slider .splide__track {
     /*display: grid;
     grid-template-rows: repeat(320px);*/
     overflow: scroll;
@@ -462,8 +631,15 @@ body {
  */
 .dailylife_section {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 }
+
+/* @media (min-width: 768px) {
+  #daily_slider .splide {
+    display: flex;
+    flex-direction: column;
+  }
+} */
 
 .dailylife_div {
   text-align: center;
@@ -523,17 +699,74 @@ body {
   border-radius: 10px;
 }
 
-.dailylife_two_information_div {
+#daily_slider .splide__track {
   font-weight: 700;
   font-size: 14px;
   margin-top: 20px;
   margin-left: 56px;
+}
+@media (min-width: 768px) {
+  #daily_slider .splide__track {
+    display: flex;
+    flex-direction: row;
+    /* 他のPC用スタイル */
+  }
+}
+@media (max-width: 767px) {
+  #daily_slider .splide__track {
+    display: block; /* Splideのデフォルトに任せる */
+  }
+}
+
+/* #daily_slider .splide__list {
+  /* display: block; */
+    /* margin: 0 auto;
+} */ */
+
+/* PC表示：縦並び */
+@media (min-width: 768px) {
+  #daily_slider .splide__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  #daily_slider .splide__slide {
+    width: 100%;
+  }
+    .dailylife_card_div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  #daily_slider .splide__list {
+    display: flex ;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 0;
+  }
+  #daily_slider .splide__slide {
+    width: 100%;
+  }
+    .dailylife_card_div {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+  }
+  .dailylife_img {
+  }
 }
 
 .Dailylife_letters_mondays {
   display: flex;
   flex-direction: row;
   margin-bottom: 4px;
+  margin-left: 56px;
 }
 
 .Dailylife_mondays_img {
@@ -549,15 +782,24 @@ body {
   height: 324px;
   background-color: #F7F9FB;
 }
+@media (max-width: 767px) {
+  .dailylife_card_div {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+  }
+} 
 
 .dailylife_contents_right_image {
   width: 470px;
   height: 218px;
 }
 
-.dailylife_whole_ul {
-  margin: 0 auto;
+#daily_slider .splide {
+  visibility: visible;
 }
+
 
 .Daily-life_li:nth-child(2) .dailylife_card_div {
   flex-direction: row-reverse;
@@ -572,6 +814,9 @@ body {
   margin-left: -100px;
 }
 
+.splide {
+  visibility: visible !important;
+}
 
 /**
  * 2.7 - 公式LINE
@@ -591,7 +836,7 @@ body {
   .line_official_section {
     background-image: url(../img/sp/bg-cta.jpg);
     background-size: cover;
-    width: 375px;
+    width: 100vw;
     height: 337px;
   }
 }
@@ -634,20 +879,22 @@ body {
   padding-top: 16px;
   padding-right: 20px;
   padding-left: 20px;
+  color: #0071bc;
 }
 
-:hover .line_official_button_div {
+.line_official_button_div:hover {
   background-color: #0071BC;
   border-color: #ffffff;
+  color: #ffffff;
 }
 
-.line_button {
+.line_button:hover {
   color: #0071BC;
 }
 
-:hover .line_button {
+/* .line_button {
   color: #ffffff;
-}
+} */
 
 /* 3.0 - Animation, JavaScript Object */
 /* ============================================ */
